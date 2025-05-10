@@ -8,6 +8,33 @@
 
 #include "logic.h"
 
+bool if_pos_mor_thn_others(int* row, int m) {
+	int count = 0;
+
+	for (int i = 0; i < m; i++)
+	{
+		if (row[i] > 0) {
+			count++;
+		}
+	}
+
+	return count > m - count;
+}
+
 int count_rows_with_more_positive_values(int** matrix, int n, int m) {
-	return 0;
+	if (matrix == nullptr|| n <= 0 || m <= 0)
+	{
+		return 0;
+	}
+
+	int count = 0;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (if_pos_mor_thn_others(matrix[i], m)) {
+			count++;
+		}
+	}
+
+	return count;
 }
